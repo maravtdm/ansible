@@ -1,0 +1,137 @@
+# ANSIBLE
+#user  nobody;
+user www;
+worker_processes  2;
+
+# This default error log path is compiled-in to make sure configuration parsing
+# errors are logged somewhere, especially during unattended boot when stderr
+# isn't normally logged anywhere. This path will be touched on every nginx
+# start regardless of error log location configured here. See
+# https://trac.nginx.org/nginx/ticket/147 for more info. 
+#
+error_log  /var/log/nginx/error.log info;
+#
+
+#pid        logs/nginx.pid;
+
+
+events {
+    worker_connections  2048;
+	}
+
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+    #log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+    #                  '$status $body_bytes_sent "$http_referer" '
+    #                  '"$http_user_agent" "$http_x_forwarded_for"';
+    #access_log  logs/access.log  main;
+    sendfile        on;
+    tcp_nopush     on;
+    keepalive_timeout  65;
+    server_tokens off;
+
+server {
+	listen       80;
+	server_name matoda.pw;
+	try_files $uri =404;
+	rewrite ^(.*) https://$server_name$1 permanent;
+	rewrite ^(.*) https://$host$request_uri? permanent;
+	}
+	
+server {
+	listen 443 ssl http2;
+	server_name  matoda.pw; 
+	add_header X-Frame-Options SAMEORIGIN;
+	add_header X-Content-Type-Options nosniff;
+	add_header X-XSS-Protection "1; mode=block";
+	add_header Strict-Transport-Security "max-age=31536000";
+#	add_header Content-Security-Policy "default-src 'self';";
+	add_header Referrer-Policy "no-referrer";
+	if ($host !~* ^(matoda.pw)$ ) {
+	return 444;
+	}
+	charset UTF-8;
+	access_log /var/log/nginx/access.log;
+	error_log /var/log/nginx/error.log;
+	error_page   500 502 503 504  /50x.html;
+
+	ssl_certificate "/usr/local/etc/letsencrypt/live/matoda.pw/cert.pem";
+	ssl_certificate_key "/usr/local/etc/letsencrypt/live/matoda.pw/privkey.pem";
+	ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+	ssl_dhparam /usr/local/etc/nginx/dhparam.pem;
+	ssl_session_cache shared:SSL:1m;
+	ssl_session_timeout 10m;
+	ssl_ciphers HIGH:!aNULL:!MD5;
+	ssl_prefer_server_ciphers  on;
+
+	# Use gzip compression
+	gzip on;
+	gzip_disable "msie6";
+	gzip_vary on;
+	gzip_proxied any;
+	gzip_comp_level 5;
+	gzip_buffers 16 8k;
+	gzip_http_version 1.0;
+
+	location / {
+		root   /usr/local/www/nginx/;
+		#html/;
+		index  index.html index.htm;
+		}
+	location = /50x.html {
+		root   /usr/local/www/nginx-dist;
+		}
+
+
+	# Set a variable to work around the lack of nested conditionals
+#		set $cache_uri $request_uri;
+	
+	location ~ /\.well-known/acme-challenge/ {
+	allow all;
+		}
+
+#	location ~ /\. {
+#		deny all; access_log off; log_not_found off;
+#		}
+
+	location = /favicon.ico {
+		alias /usr/local/www/freebsd.png;
+		}
+
+	location /robots.txt {
+		return 200 "User-agent: *\nDisallow: /";
+		}
+
+	location /online_shares {
+		alias /mnt/doc;
+		if ($request_uri ~* ".(jpg|jpeg|gif|gz|zip|flv|rar|wmv|avi|css|swf|png|htc|ico|mpeg|mpg|txt|mp3|mov|js)(\?v=[0-9.]+)?$") {
+		expires 30d;
+		access_log off;
+		add_header Cache-Control "public";
+		break; }
+		autoindex on;
+		autoindex_localtime on;
+		autoindex_exact_size off;
+		auth_basic           "closed site";
+    		auth_basic_user_file conf/htpasswd;
+		}
+	location /paul {
+		alias /mnt/doc/paul;
+		autoindex on;
+		autoindex_localtime on;
+		autoindex_exact_size off;
+		auth_basic           "closed site";
+		auth_basic_user_file conf/htpasswd;
+		}
+	location /public {
+		alias /mnt/doc/public;
+		autoindex on;
+		autoindex_localtime on;
+		autoindex_exact_size off;
+#		auth_basic           "closed site";
+#		auth_basic_user_file conf/htpasswd;
+		}
+	}
+}

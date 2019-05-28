@@ -1,0 +1,48 @@
+---
+
+- template:
+    src: banner.j2
+    dest: /etc/banner
+    owner: root
+    group: wheel
+    mode: 0644
+
+- template:
+    src: motd.j2
+    dest: /etc/motd
+
+- template:
+    src: sshd_config.j2
+    dest: /etc/ssh/sshd_config
+
+- template:
+    src: plexupdate.j2
+    dest: /home/david/bin/plexupdate
+    owner: david
+    mode: 0755
+
+- template:
+    src: vape.j2
+    dest: /home/david/bin/vape
+    owner: david
+    mode: 0755
+
+- template:
+    src: afp.conf.j2
+    dest: /usr/local/etc/afp.conf
+
+- template:
+    src: nginx.conf.j2
+    dest: /usr/local/etc/nginx/nginx.conf
+
+- template:
+    src: matoda.pw..conf.j2
+    dest: /usr/local/etc/letsencrypt/renewal/matoda.pw.conf
+
+- template:
+    src: minidlna.conf.j2
+    dest: /usr/local/etc/minidlna.conf
+
+- template:
+    src: smb4.conf.j2
+    dest: /usr/local/etc/smb4.conf

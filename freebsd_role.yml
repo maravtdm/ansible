@@ -1,0 +1,7 @@
+---
+
+- hosts: bsd-one
+  become: true
+  become_user: root
+  roles:
+    - role_freebsd

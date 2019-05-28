@@ -1,0 +1,84 @@
+#!/usr/bin/env bash
+### Powered by Ansible
+
+#set -x
+home_dir=$HOME
+cd ${home_dir}
+
+installed=$(/usr/local/share/plexmediaserver/Plex_Media_Server --version | sed 's/v//')
+version=$(w3m -dump https://plex.tv/downloads/details/1\?build\=freebsd-x86_64\&channel\=16\&distro\=freebsd | awk -F"\"" '/Release id/ {print $4}')
+arch="FreeBSD-amd64"
+plex_tmp="PlexMediaServer-${version}"
+plex_dir="plexmediaserver"
+plex_dir_old="plexmediaserver_old"
+plex_path="/usr/local/share"
+
+if [ $USER == "root" ];	then 
+	echo "Avoid running this script as root"
+	echo "Exiting ..."
+else
+
+status plexmediaserver >/dev/null 2>&1
+process=$?
+
+if [ "$installed" == "$version" ]
+	then
+		echo "Running version : $installed"
+		echo "Latest release  : $version"
+		echo " ________________________"
+		echo "|                        |"
+		echo "| No news is good news ! |"
+		echo "|________________________|"
+	#	echo "--------------------------"
+		echo ""
+	else
+		echo "Running version : $installed"
+		echo "Latest release  : $version"
+	echo "Update available, proceed ? (Y/n)"
+	read answer
+
+	case ${answer} in 
+	n)
+		exit 0
+		;;
+
+	*)
+		echo "Download ..."
+		archive="PlexMediaServer-${version}-${arch}.tar.bz2"
+		wget https://downloads.plex.tv/plex-media-server-new/${version}/freebsd/PlexMediaServer-${version}-${arch}.tar.bz2 > /dev/null 2>&1
+		echo "----"
+	
+		echo "Decompress ..."
+		tar -xvf ${archive} > /dev/null 2>&1
+		mv ${plex_tmp} ${plex_dir}
+#		rm PlexMediaServer-${version}-${arch}.tar.bz2
+		echo "----"
+
+	if [ "${process}" -ne "0" ] ; then	
+		echo "service stop ..."
+		sudo service plexmediaserver stop
+		echo "----"
+	fi
+		echo "update in progress ..."
+		cd ${plex_dir}
+		ln -s "Plex Media Server" Plex_Media_Server
+		;;
+	esac
+
+	cd ${plex_path}
+	if [ -d ${plex_dir_old} ]
+		then 
+			sudo rm -rf ${plex_dir_old}
+			sudo mv ${plex_dir} ${plex_dir_old}
+			sudo mv ${home_dir}/${plex_dir} ${plex_path}/
+			echo "----"
+			echo "service start ..."
+			sudo service plexmediaserver start
+		else
+			sudo mv ${plex_dir} ${plex_dir_old}
+			sudo mv ${home_dir}/${plex_dir} ${plex_path}/
+			echo "service start ..."
+			sudo service plexmediaserver start
+		fi
+	fi
+fi

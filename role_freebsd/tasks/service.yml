@@ -1,0 +1,30 @@
+---
+# tasks file for role_freebsd
+
+- name: check if {{ services }} are started
+  service:
+    name: "{{ item }}"
+    state: started
+  loop: "{{ services }}"
+#  register: result
+
+#- name: check the url
+#  uri:
+#    url: http://matoda.pw
+#    validate_certs: no
+#    return_content: yes
+#    status_code: 200
+#  when: result.rc == 1
+
+- name: service jdownloader
+  service:
+    name: jdownloader
+    state: started
+
+- name: check PID of JD
+  command: cat /var/run/jdownloader.pid
+  register: results
+
+- name: Display PID
+  debug:
+    var: results.stdout

@@ -1,0 +1,10 @@
+---
+# tasks file for role_freebsd
+
+- name: display address IP
+  debug:
+    var: "{{ item }}"
+  loop:
+    - ansible_default_ipv4.address
+    - ansible_memfree_mb
+

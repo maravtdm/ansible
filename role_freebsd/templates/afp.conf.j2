@@ -1,0 +1,29 @@
+; ANSIBLE
+; Netatalk 3.x configuration file
+;
+
+[Global]
+; Global server settings
+log file = /var/log/netatalk.log
+;hosts allow = 192.168.1.0/24
+mimic model = TimeCapsule6,116
+afp interfaces = re0
+
+
+;[Homes]
+; basedir regex = /home
+
+[doc]
+; path = /path/to/volume
+ path = /mnt/doc
+
+;[Back In Time]
+; path = /mnt/doc/10_ArchBackup
+
+;[My Time Machine Volume]
+[Time_Machine]
+
+[09_MacBackup]
+ path = /mnt/doc/09_MacBackup
+; valid users = david 
+ time machine = yes

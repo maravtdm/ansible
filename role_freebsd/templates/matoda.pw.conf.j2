@@ -1,0 +1,14 @@
+# ANSIBLE
+# renew_before_expiry = 30 days
+version = 0.31.0
+archive_dir = /usr/local/etc/letsencrypt/archive/matoda.pw
+cert = /usr/local/etc/letsencrypt/live/matoda.pw/cert.pem
+privkey = /usr/local/etc/letsencrypt/live/matoda.pw/privkey.pem
+chain = /usr/local/etc/letsencrypt/live/matoda.pw/chain.pem
+fullchain = /usr/local/etc/letsencrypt/live/matoda.pw/fullchain.pem
+
+# Options used in the renewal process
+[renewalparams]
+account = 711091933ac427a7b88808c2dfbe0090
+authenticator = standalone
+server = https://acme-v02.api.letsencrypt.org/directory

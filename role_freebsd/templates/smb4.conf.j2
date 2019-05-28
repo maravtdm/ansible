@@ -1,0 +1,25 @@
+; ANSIBLE
+[global]
+	server string = Samba Server Version %v
+	server role = AUTO
+	netbios name = bsd-one
+	wins support = Yes
+;	wins server = bsd-one
+	enhanced browsing = no
+	security = user
+	passdb backend = tdbsam
+	smb ports = 139
+  	workgroup = WORKGROUP
+	interfaces = 192.168.1.22 127.0.0.1
+
+[doc]
+	comment = Doc Directories
+	path = /mnt/doc
+	read only = no
+	available = yes
+	browseable = yes
+	writable = yes
+	guest ok = no
+	public = no
+	printable = no
+	locking = no
