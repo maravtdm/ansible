@@ -6,7 +6,6 @@ mini=$(w3m -dump http://www.joyetech.com/mvr-software/\?sid\=234 | grep -n1 "Lat
 minikin=$(w3m -dump https://www.asmodus.com/pages/downloads | grep -2 "Minikin 2" | awk '/V/ {print $2}' | head -1 | sed 's/\://')
 dotmod=$(w3m -dump https://dotmod.com/pages/dotsquonk-100w-firmware-update | awk '/Firmware update/ { print $3 }')
 topside=$(w3m -dump https://www.dovpoecig.com/topside-squonker | awk '/Control Firmware/ {print $5}' | head -1 | sed 's/)//')
-pico=$(w3m http://www.eleafworld.com/softwares-for-istick-pico/ | awk '/Firmware/ {print $2}' | head -1)
 
 b='\e[1;40m'
 blue='\e[1;36m'
@@ -21,5 +20,3 @@ echo $b"DotSquonk (V3.3)$noc   = $yellow$dotmod" $noc
 echo "==>$blue https://dotmod.com/pages/dotsquonk-100w-firmware-update"$noc
 echo $b"Topside (V1.0.2)$noc   = $yellow$topside" $noc
 echo "==>$blue https://www.dovpoecig.com/topside-squonker"$noc
-echo $b"Pico (V1.0.0)$noc      = $yellow$pico" $noc
-echo "==>$blue w3m http://www.eleafworld.com/softwares-for-istick-pico/"$noc
