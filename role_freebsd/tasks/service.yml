@@ -16,15 +16,15 @@
 #    status_code: 200
 #  when: result.rc == 1
 
-- name: service jdownloader
-  service:
-    name: jdownloader
-    state: started
+  #- name: service jdownloader
+  #service:
+  #  name: jdownloader
+  #  state: started
 
-- name: check PID of JD
-  command: cat /var/run/jdownloader.pid
-  register: results
+  #- name: check PID of JD
+  #command: cat /var/run/jdownloader.pid
+  #register: results
 
-- name: Display PID
-  debug:
-    var: results.stdout
+  #- name: Display PID
+  #debug:
+  #  var: results.stdout

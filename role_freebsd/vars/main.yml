@@ -1,8 +1,8 @@
 services:
   - nginx
   - plexmediaserver
+  - jdownloader
 ports:
   - www/nginx
   - multimedia/plexmediaserver
-jd_service:
-  - jdownloader
+    #jd_service:
