@@ -13,58 +13,58 @@
 #    group: wheel
 #    mode: 0644
 
-- name: motd
+- name: file /etc/motd
   template:
     src: motd.j2
     dest: /etc/motd
 
-- name: sshd
+- name: sshd_config file
   template:
     src: sshd_config.j2
     dest: /etc/ssh/sshd_config
   notify: restart sshd
 
-- name: plex
+- name: plexupdate script
   template:
     src: plexupdate.j2
     dest: /home/david/bin/plexupdate
     owner: david
     mode: 0755
 
-- name: vape
+- name: vape script
   template:
     src: vape.j2
     dest: /home/david/bin/vape
     owner: david
     mode: 0755
 
-- name: afp conf
+- name: file /usr/local/etc/afp.conf
   template:
     src: afp.conf.j2
     dest: /usr/local/etc/afp.conf
 
-- name: nginx conf
+- name: file /usr/local/etc/nginx/nginx.conf
   template:
     src: nginx.conf.j2
     dest: /usr/local/etc/nginx/nginx.conf
     owner: root
     group: wheel
 
-- name: matoda letsencrypt conf
+- name: file /usr/local/etc/letsencrypt/renewal/matoda.pw.conf
   template:
     src: matoda.pw.conf.j2
     dest: /usr/local/etc/letsencrypt/renewal/matoda.pw.conf
     owner: root
     group: wheel
 
-- name: minidlna conf
+- name: file /usr/local/etc/minidlna.conf
   template:
     src: minidlna.conf.j2
     dest: /usr/local/etc/minidlna.conf
     owner: root
     group: wheel
 
-- name: samba conf
+- name: file /usr/local/etc/smb4.conf
   template:
     src: smb4.conf.j2
     dest: /usr/local/etc/smb4.conf

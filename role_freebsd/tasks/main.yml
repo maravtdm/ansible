@@ -13,10 +13,10 @@
 #    group: wheel
 #    mode: 0644
 
-- name: file /etc/motd
-  template:
-    src: motd.j2
-    dest: /etc/motd
+  #- name: file /etc/motd
+  #template:
+  #  src: motd.j2
+  #  dest: /etc/motd
 
 - name: sshd_config file
   template:
