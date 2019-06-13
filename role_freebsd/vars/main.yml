@@ -2,7 +2,7 @@ services:
   - nginx
   - plexmediaserver
   - jdownloader
-ports:
-  - www/nginx
-  - multimedia/plexmediaserver
+packages:
+  - nginx
+  - plexmediaserver
     #jd_service:
