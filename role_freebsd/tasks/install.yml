@@ -1,10 +1,10 @@
 ---
 # tasks file for role_freebsd
 
-- name: check if {{ ports }} are installed
-  portinstall:
+- name: check if {{ packages }} are installed
+  package:
     name: "{{ item }}"
     state: present
-  loop: "{{ ports }}"
+  loop: "{{ packages }}"
   when: ansible_distribution == "FreeBSD"
 
