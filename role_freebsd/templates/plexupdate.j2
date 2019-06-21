@@ -51,7 +51,7 @@ if [ "$installed" == "$version" ]
 		echo "Decompress ..."
 		tar -xvf ${archive} > /dev/null 2>&1
 		mv ${plex_tmp} ${plex_dir}
-#		rm PlexMediaServer-${version}-${arch}.tar.bz2
+		rm PlexMediaServer-${version}-${arch}.tar.bz2
 		echo "----"
 
 	if [ "${process}" -ne "0" ] ; then	
