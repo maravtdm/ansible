@@ -51,12 +51,12 @@
     group: wheel
   notify: restart nginx
 
-  #- name: file /usr/local/etc/letsencrypt/renewal/matoda.pw.conf
-  #  template:
-  #    src: matoda.pw.conf.j2
-  #    dest: /usr/local/etc/letsencrypt/renewal/matoda.pw.conf
-  #    owner: root
-  #    group: wheel
+- name: file /usr/local/etc/letsencrypt/renewal/matoda.pw.conf
+  template:
+    src: matoda.pw.conf.j2
+    dest: /usr/local/etc/letsencrypt/renewal/matoda.pw.conf
+    owner: root
+    group: wheel
 
 - name: file /usr/local/etc/minidlna.conf
   template:
