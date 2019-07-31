@@ -49,6 +49,7 @@
     dest: /usr/local/etc/nginx/nginx.conf
     owner: root
     group: wheel
+  notify: restart nginx
 
 - name: file /usr/local/etc/letsencrypt/renewal/matoda.pw.conf
   template:
