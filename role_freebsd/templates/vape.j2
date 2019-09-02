@@ -2,7 +2,6 @@
 # Powered by Ansible
 
 mini=$(w3m -dump https://www.joyetech.com/mvr-software/\?sid\=234 | grep -n1 "Latest Version" | awk '/Firmware/ {print $2}')
-#$(w3m -dump http://www.joyetech.com/mvr-software/\?sid\=234 | awk '/Firmware V/ {print $2}' | head -1)
 minikin=$(w3m -dump https://www.asmodus.com/pages/downloads | grep -2 "Minikin 2" | awk '/V/ {print $2}' | head -1 | sed 's/\://')
 dotmod=$(w3m -dump https://dotmod.com/pages/dotsquonk-100w-firmware-update | awk '/Firmware update/ { print $3 }')
 topside=$(w3m -dump https://www.dovpoecig.com/topside-squonker | awk '/Control Firmware/ {print $5}' | head -1 | sed 's/)//')
