@@ -1,8 +1,8 @@
 services:
-  - "nginx"
-  - "plexmediaserver"
-  - "jdownloader"
+  - nginx
+  - plexmediaserver
+  - jdownloader
 packages:
-  - "nginx"
-  - "plexmediaserver"
+  - nginx
+  - plexmediaserver
     #jd_service:
