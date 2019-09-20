@@ -1,7 +1,7 @@
 ---
 # tasks file for role_freebsd
 
-- name: check if {{ services }} are started
+- name: check if "{{ services }}" are started
   service:
     name: "{{ item }}"
     state: started

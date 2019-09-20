@@ -1,7 +1,7 @@
 ---
 # tasks file for role_freebsd
 
-- name: display address IP
+- name: display address IP & MemFree
   debug:
     var: "{{ item }}"
   loop:
