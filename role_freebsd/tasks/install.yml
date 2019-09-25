@@ -1,7 +1,7 @@
 ---
 # tasks file for role_freebsd
 
-- name: check if "{{ packages }}" are installed
+- name: check if {{ packages | to_yaml }} are installed
   package:
     name: "{{ item }}"
     state: present
