@@ -1,5 +1,6 @@
 #!/usr/bin/env zsh
 # Powered by Ansible
+# Online check update box mods firmware
 
 mini=$(w3m -dump https://www.joyetech.com/mvr-software/\?sid\=234 | grep -n1 "Latest Version" | awk '/Firmware/ {print $2}')
 minikin=$(w3m -dump https://www.asmodus.com/pages/downloads | grep -2 "Minikin 2" | awk '/V/ {print $2}' | head -1 | sed 's/\://')
