@@ -17,14 +17,14 @@
 
 - template:
     src: plexupdate.j2
-    dest: /home/david/bin/plexupdate
-    owner: david
+    dest: "{{ local_bin }}"/plexupdate
+    owner: "{{ owner }}"
     mode: 0755
 
 - template:
     src: vape.j2
-    dest: /home/david/bin/vape
-    owner: david
+    dest: "{{ local_bin }}"/vape
+    owner: "{{ owner }}"
     mode: 0755
 
 - template:

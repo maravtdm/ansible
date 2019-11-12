@@ -6,3 +6,5 @@ packages:
   - nginx
   - plexmediaserver
     #jd_service:
+
+local_bin: /home/david/bin
