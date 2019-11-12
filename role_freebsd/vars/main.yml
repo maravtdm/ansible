@@ -8,3 +8,4 @@ packages:
     #jd_service:
 
 local_bin: /home/david/bin
+owner: david

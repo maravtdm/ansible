@@ -5,19 +5,6 @@
 - include: install.yml
 - include: service.yml
 
-#- name: banner
-#  template:
-#    src: banner.j2
-#    dest: /etc/banner
-#    owner: root
-#    group: wheel
-#    mode: 0644
-
-  #- name: file /etc/motd
-  #template:
-  #  src: motd.j2
-  #  dest: /etc/motd
-
 - name: sshd_config file
   template:
     src: sshd_config.j2
@@ -27,15 +14,15 @@
 - name: plexupdate script
   template:
     src: plexupdate.j2
-    dest: /home/david/bin/plexupdate
-    owner: david
+    dest: "{{ local_bin }}/plexupdate"
+    owner: "{{ owner }}"
     mode: 0755
 
 - name: vape script
   template:
     src: vape.j2
-    dest: /home/david/bin/vape
-    owner: david
+    dest: "{{ local_bin }}/vape"
+    owner: "{{ owner }}"
     mode: 0755
 
 - name: file /usr/local/etc/afp.conf
@@ -50,13 +37,6 @@
     owner: root
     group: wheel
   notify: restart nginx
-
-  #- name: file /usr/local/etc/letsencrypt/renewal/matoda.pw.conf
-  #  template:
-  #    src: matoda.pw.conf.j2
-  #    dest: /usr/local/etc/letsencrypt/renewal/matoda.pw.conf
-  #    owner: root
-  #    group: wheel
 
 - name: file /usr/local/etc/minidlna.conf
   template:
