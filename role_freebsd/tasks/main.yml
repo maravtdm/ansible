@@ -25,10 +25,10 @@
     owner: "{{ owner }}"
     mode: 0755
 
-- name: file /usr/local/etc/afp.conf
-  template:
-    src: afp.conf.j2
-    dest: /usr/local/etc/afp.conf
+#- name: file /usr/local/etc/afp.conf
+#  template:
+#    src: afp.conf.j2
+#    dest: /usr/local/etc/afp.conf
 
 - name: file /usr/local/etc/nginx/nginx.conf
   template:
