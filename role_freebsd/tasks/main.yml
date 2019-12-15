@@ -38,12 +38,12 @@
     group: wheel
   notify: restart nginx
 
-- name: file /usr/local/etc/minidlna.conf
-  template:
-    src: minidlna.conf.j2
-    dest: /usr/local/etc/minidlna.conf
-    owner: root
-    group: wheel
+#- name: file /usr/local/etc/minidlna.conf
+#  template:
+#    src: minidlna.conf.j2
+#    dest: /usr/local/etc/minidlna.conf
+#    owner: root
+#    group: wheel
 
 - name: file /usr/local/etc/smb4.conf
   template:
