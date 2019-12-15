@@ -51,3 +51,4 @@
     dest: /usr/local/etc/smb4.conf
     owner: root
     group: wheel
+  notify: restart samba
