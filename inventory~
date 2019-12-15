@@ -1,0 +1,6 @@
+<<<<<<< HEAD
+bsd-one
+=======
+[default]
+bsd-one ansible_host=192.168.1.22 ansible_connection=local
+>>>>>>> 38f72c3f3804f8d7d075fe3c87acbcdc17c4eeae

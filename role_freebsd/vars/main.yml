@@ -4,7 +4,8 @@ services:
   - jdownloader
 packages:
   - nginx
-  - plexmediaserver
+  - samba410
+#  - plexmediaserver
     #jd_service:
 
 local_bin: /home/david/bin

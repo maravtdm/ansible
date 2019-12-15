@@ -25,10 +25,10 @@
     owner: "{{ owner }}"
     mode: 0755
 
-- name: file /usr/local/etc/afp.conf
-  template:
-    src: afp.conf.j2
-    dest: /usr/local/etc/afp.conf
+#- name: file /usr/local/etc/afp.conf
+#  template:
+#    src: afp.conf.j2
+#    dest: /usr/local/etc/afp.conf
 
 - name: file /usr/local/etc/nginx/nginx.conf
   template:
@@ -38,12 +38,12 @@
     group: wheel
   notify: restart nginx
 
-- name: file /usr/local/etc/minidlna.conf
-  template:
-    src: minidlna.conf.j2
-    dest: /usr/local/etc/minidlna.conf
-    owner: root
-    group: wheel
+#- name: file /usr/local/etc/minidlna.conf
+#  template:
+#    src: minidlna.conf.j2
+#    dest: /usr/local/etc/minidlna.conf
+#    owner: root
+#    group: wheel
 
 - name: file /usr/local/etc/smb4.conf
   template:
@@ -51,3 +51,4 @@
     dest: /usr/local/etc/smb4.conf
     owner: root
     group: wheel
+  notify: restart samba
