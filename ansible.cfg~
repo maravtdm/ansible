@@ -1,8 +1,0 @@
-# config file for ansible -- https://ansible.com/
-# ===============================================
-
-[defaults]
-
-inventory  = ./inventory
-remote_user = david
-#verbosity = 4
