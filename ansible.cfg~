@@ -5,5 +5,4 @@
 
 inventory  = ./inventory
 remote_user = david
-
 #verbosity = 4
