@@ -1,1 +1,1 @@
-# ansible config files for FreeBSD Box
+# ansible config files for FreeBSD NAS
