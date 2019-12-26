@@ -1,9 +1,9 @@
 #!/bin/sh
 
-if [[ -f .*~ || -f *~ ]] ; then
-  rm .*~
-  rm *~
-fi
+test -f .*~ 
+[ if $? = "0" ] && rm *~
+test -f *~
+[ if $? = "0" ] && rm .*~
 
 git add --all .
 
