@@ -1,9 +1,9 @@
 #!/bin/sh
 
 test -f .*~ 
-[ "$?" = "0" ] && rm *~
-test -f *~
 [ "$?" = "0" ] && rm .*~
+test -f *~
+[ "$?" = "0" ] && rm *~
 
 git add --all .
 
