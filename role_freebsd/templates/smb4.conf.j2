@@ -10,58 +10,65 @@
 	passdb backend = tdbsam
 	smb ports = 139
 	workgroup = WORKGROUP
-	interfaces = 192.168.1.0/24 127.0.0.1
+	interfaces = 192.168.111.0/24 127.0.0.1
 
 	vfs objects = catia fruit streams_xattr
-fruit:aapl = yes
-fruit:advertise_fullsync = true
-fruit:time machine = yes
-fruit:resource = xattr
-fruit:nfs_aces = no
-fruit:model = Xserve
-# Security
-client min protocol = SMB2_02
-server min protocol = SMB2_02
-server max protocol = SMB3_11
-encrypt passwords = yes
-;smb encrypt = off
-smb ports = 445
-restrict anonymous = 2
-unix password sync = yes
-pam password change = yes
-passwd program = /usr/bin/passwd %u
-passwd chat = *Enter\snew\s*\spassword:* %n\n *Retype\snew\s*\spassword:* %n\n *password\supdated\ssuccessfully* .
-# Unneeded features
-disable netbios = yes
-host msdfs = no
-load printers = no
-printcap cache time = 0
-printcap name = /dev/null
-# dcerpc endpoint servers = epmapper, wkssvc, rpcecho, samr, netlogon, lsarpc, drsuapi, dssetup, unixinfo, browser, eventlog6, backupkey, dnsserver
-dcerpc endpoint servers = rpcecho
-# server services = s3fs, rpc, nbt, wrepl, ldap, cldap, kdc, drepl, winbindd, ntp_signd, kcc, dnsupdate, dns
-server services = rpc
-rpc_server:epmapper = disabled
-rpc_server:winreg = disabled
-rpc_server:lsarpc = disabled
-rpc_server:samr = disabled
-rpc_server:netlogon = disabled
-rpc_server:netdfs = disabled
-rpc_server:dssetup = disabled
-rpc_server:wkssvc = disabled
-rpc_server:spoolss = disabled
-rpc_server:svcctl = disabled
-rpc_server:ntsvcs = disabled
-rpc_server:eventlog = disabled
-rpc_server:initshutdown = disabled
-rpc_server:mdssvc = disabled
-allow dns updates = disabled
-dns proxy = no
-enable core files = no
-name resolve order = host bcast
-# Performance
-;use sendfile = yes
+	fruit:aapl = yes
+	fruit:advertise_fullsync = true
+	fruit:time machine = yes
+	fruit:resource = xattr
+	fruit:nfs_aces = no
+	fruit:model = Xserve
 
+	# Security
+	client min protocol = SMB2_02
+	server min protocol = SMB2_02
+	server max protocol = SMB3_11
+	encrypt passwords = yes
+	;smb encrypt = off
+	smb ports = 445
+	restrict anonymous = 2
+	unix password sync = yes
+	pam password change = yes
+	passwd program = /usr/bin/passwd %u
+	passwd chat = *Enter\snew\s*\spassword:* %n\n *Retype\snew\s*\spassword:* %n\n *password\supdated\ssuccessfully* .
+	# Unneeded features
+	disable netbios = yes
+	host msdfs = no
+	load printers = no
+	printcap cache time = 0
+	printcap name = /dev/null
+	# dcerpc endpoint servers = epmapper, wkssvc, rpcecho, samr, netlogon, lsarpc, drsuapi, dssetup, unixinfo, browser, eventlog6, backupkey, dnsserver
+	dcerpc endpoint servers = rpcecho
+	# server services = s3fs, rpc, nbt, wrepl, ldap, cldap, kdc, drepl, winbindd, ntp_signd, kcc, dnsupdate, dns
+	server services = rpc
+	rpc_server:epmapper = disabled
+	rpc_server:winreg = disabled
+	rpc_server:lsarpc = disabled
+	rpc_server:samr = disabled
+	rpc_server:netlogon = disabled
+	rpc_server:netdfs = disabled
+	rpc_server:dssetup = disabled
+	rpc_server:wkssvc = disabled
+	rpc_server:spoolss = disabled
+	rpc_server:svcctl = disabled
+	rpc_server:ntsvcs = disabled
+	rpc_server:eventlog = disabled
+	rpc_server:initshutdown = disabled
+	rpc_server:mdssvc = disabled
+	allow dns updates = disabled
+	dns proxy = no
+	enable core files = no
+	name resolve order = host bcast
+	# Performance
+	;use sendfile = yes
+
+	# this tells Samba to use a separate log file for each machine
+	# that connects
+	log file = /var/log/samba4/log.%m
+	# Put a capping on the size of the log files (in Kb).
+	max log size = 50
+	log level = 1
 
 [doc]
 	comment = Doc Directories

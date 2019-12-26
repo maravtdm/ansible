@@ -27,21 +27,21 @@
     owner: "{{ owner }}"
     mode: 0755
 
-- template:
-    src: afp.conf.j2
-    dest: /usr/local/etc/afp.conf
+#- template:
+#    src: afp.conf.j2
+#    dest: /usr/local/etc/afp.conf
 
 - template:
     src: nginx.conf.j2
     dest: /usr/local/etc/nginx/nginx.conf
 
 - template:
-    src: matoda.pw..conf.j2
+    src: matoda.pw.conf.j2
     dest: /usr/local/etc/letsencrypt/renewal/matoda.pw.conf
 
-- template:
-    src: minidlna.conf.j2
-    dest: /usr/local/etc/minidlna.conf
+#- template:
+#    src: minidlna.conf.j2
+#    dest: /usr/local/etc/minidlna.conf
 
 - template:
     src: smb4.conf.j2
