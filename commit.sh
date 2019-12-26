@@ -1,7 +1,9 @@
 #!/bin/sh
 
-rm .*~
-rm *~
+if [[ -f .*~ || -f *~ ]] ; then
+  rm .*~
+  rm *~
+fi
 
 git add --all .
 
