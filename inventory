@@ -1,6 +1,5 @@
 [freebsd]
-
 bsd-one ansible_host=192.168.111.22 
 
-#[freebsd:vars]
-#ansible_connection=local
+[freebsd:vars]
+ansible_connection=local
