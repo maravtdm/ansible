@@ -2,5 +2,5 @@
 
 bsd-one ansible_host=192.168.111.22 
 
-[default:vars]
-ansible_connection=local
+#[default:vars]
+#ansible_connection=local
