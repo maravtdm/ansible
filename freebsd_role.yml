@@ -1,6 +1,6 @@
 ---
 
-- hosts: all
+- hosts: freebsd
   become: true
   become_user: root
   roles:
