@@ -10,6 +10,7 @@ PLEX_TMP="PlexMediaServer-${VERSION}"
 PLEX_DIR="plexmediaserver"
 PLEX_DIR_OLD="plexmediaserver_old"
 PLEX_PATH="/usr/local/share"
+_SUDO="doas"
 
 if [ $USER == "root" ];	then 
 	echo "Avoid running this script as root"
@@ -54,7 +55,7 @@ if [ "$INSTALLED" == "$VERSION" ]
 
 	if [ "${PROCESS}" -ne "0" ] ; then	
 		echo "service stop ..."
-		sudo service plexmediaserver stop
+		$_SUDO service plexmediaserver stop
 		echo "----"
 	fi
 		echo "update in progress ..."
@@ -66,17 +67,17 @@ if [ "$INSTALLED" == "$VERSION" ]
 	cd ${PLEX_PATH}
 	if [ -d ${PLEX_DIR_OLD} ]
 		then 
-			sudo rm -rf ${PLEX_DIR_OLD} # Remove previous old dir
-			sudo mv ${PLEX_DIR} ${PLEX_DIR_OLD} # Move current dir to old dir
-			sudo mv ${HOME_DIR}/${PLEX_DIR} ${PLEX_PATH}/
+			$_SUDO rm -rf ${PLEX_DIR_OLD} # Remove previous old dir
+			$_SUDO mv ${PLEX_DIR} ${PLEX_DIR_OLD} # Move current dir to old dir
+			$_SUDO mv ${HOME_DIR}/${PLEX_DIR} ${PLEX_PATH}/
 			echo "----"
 			echo "service start ..."
-			sudo service plexmediaserver start
+			$_SUDO service plexmediaserver start
 		else
-			sudo mv ${PLEX_DIR} ${PLEX_DIR_OLD}
-			sudo mv ${HOME_DIR}/${PLEX_DIR} ${PLEX_PATH}/
+			$_SUDO mv ${PLEX_DIR} ${PLEX_DIR_OLD}
+			$_SUDO mv ${HOME_DIR}/${PLEX_DIR} ${PLEX_PATH}/
 			echo "service start ..."
-			sudo service plexmediaserver start
+			$_SUDO service plexmediaserver start
 		fi
 	fi
 fi
