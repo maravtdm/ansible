@@ -8,7 +8,7 @@ packages:
   - nginx
   - samba410
 
-local_bin: /home/david/bin
+local_bin: /usr/home/david/bin
 owner: david
 local_path: /usr/local
 backup_path: /mnt/zdoc/14_FreeBSD/ansible_backup
