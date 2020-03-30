@@ -1,0 +1,49 @@
+kern.geom.label.disk_ident.enable="0"
+kern.geom.label.gptid.enable="0"
+
+loader_brand="gbsd"
+loader_logo="gbsd"
+hw.psm.synaptics_support="1"
+# boot_mute="YES"
+geom_mirror_load="YES"
+crypto_load="YES"
+aesni_load="YES"
+geom_eli_load="YES"
+zfs_load="YES"
+aio_load="YES"
+
+# WIFI
+#if_ath_load="YES"
+#if_wi_load="YES"
+#wlan_wep_load="YES"
+#wlan_ccmp_load="YES"
+#wlan_tkip_load="YES"
+
+coretemp_load="YES"
+amdtemp_load="YES"
+smbios_load="YES"
+smbus_load="YES"
+ichsmb_load="YES"
+
+libiconv_load="YES"
+smbfs_load="YES"
+
+# tunning
+vm.kmem_size_max="16G"
+vm.kmem_size="12G"
+kern.maxvnodes=250000
+vfs.unmapped_buf_allowed=0
+
+cpu_microcode_load="YES"
+cpu_microcode_name="/boot/firmware/intel-ucode.bin"
+
+kern.racct.enable=1
+
+vboxdrv_load="YES"
+#vboxnetadp_load="YES"
+#vboxnetflt_load="YES"
+
+## VT
+hw.vga.textmode=1
+kern.vty=vt
+kern.vt.fb.default_mode="1280x1024"

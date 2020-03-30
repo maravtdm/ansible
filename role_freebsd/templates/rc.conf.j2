@@ -1,0 +1,76 @@
+hostname="bsd-one"
+keymap="fr.kbd"
+#ifconfig_re0="DHCP"
+ifconfig_re0="inet 192.168.111.22 netmask 255.255.255.0"
+defaultrouter="192.168.111.254"
+sshd_enable="YES"
+# Set dumpdev to "AUTO" to enable crash dumps, "NO" to disable
+dumpdev="AUTO"
+zfs_enable="YES"
+kld_list="/boot/modules/radeonkms.ko /boot/modules/vboxnetflt.ko /boot/modules/vboxnetadp.ko"
+#kld_list="/boot/modules/amdgpu.ko"
+#kld_list="/boot/modules/i915kms.ko"
+linux_enable="YES"
+
+#moused_enable="YES"
+dbus_enable="YES"
+hald_enable="YES"
+powerdxx_enable="NO"
+microcode_update_enable="YES"
+
+slim_enable="NO"
+
+local_unbound_enable="YES"
+ntpd_enable="YES"
+
+netatalk_enable="NO"
+avahi_daemon_enable="YES"
+cnid_metad_enable="YES"
+#
+samba_server_enable="YES"
+rpcbind_enable="YES"
+nfs_server_enable="NO"
+mountd_enable="NO"
+nfs_server_flags="-u -t -n 4"
+mountd_flags="-r"
+
+# Firewall
+pf_enable="YES"
+pf_rules="/etc/pf.conf"
+pflog_enable="NO"
+
+#devfs_system_ruleset="localrules"
+devfs_system_ruleset="system"
+
+jdownloader_enable="YES"
+jdownloader_user="david"
+jdownloader_group="david"
+plexmediaserver_enable="YES"
+
+vboxservice_enable="NO"
+vboxnet_enable="YES"
+vboxguest_enable="YES"
+vboxheadless_enable="YES"
+#vboxwebsrv_enable="NO"
+#vboxwebsrv_flags="-F /tmp/vboxweb"
+
+sendmail_enable="NONE"
+sendmail_submit_enable="NO"
+sendmail_outbound_enable="NO"
+sendmail_msp_queue_enable="NO"
+
+nginx_enable="YES"
+
+rundeck_enable="NO"
+mysql_enable="NO"
+
+minidlna_enable="NO"
+emby_server_enable="NO"
+clamav_clamd_enable="NO"
+clamav_freshclam_enable="NO"
+#wlans_ath0="wlan0"
+#ifconfig_wlan0="WPA DHCP"
+smartd_enable="NO"
+
+#vm_enable="YES"
+#vm_dir="/mnt/zdoc/50_VM_Disk"
