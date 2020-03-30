@@ -4,6 +4,7 @@
 #- include: display_ip.yml
 #- include: service.yml
 - include: install.yml
+- include: backup.yml
 
 - name: sshd_config file
   template:
@@ -74,23 +75,3 @@
   template:
     src: pf.conf.j2
     dest: /etc/pf.conf
-
-- name: backup plexdata 
-  archive:
-    src: '{{ local_path }}/plexdata'
-    dest: '{{ backup_path }}/plexdata.tar.gz'
-
-- name: backup nginx
-  archive:
-    src: '{{ local_path }}/etc/nginx'
-    dest: '{{ backup_path }}/nginx.tar.gz'
-
-- name: backup pf_files
-  archive:
-    src: /etc/pf-files
-    dest: '{{ backup_path }}/pf-files.tar.gz'
-
-- name: backup letsencrypt
-  archive:
-    src: '{{ local_path }}/etc/letsencrypt'
-    dest: '{{ backup_path }}/letsencrypt.tar.gz'
