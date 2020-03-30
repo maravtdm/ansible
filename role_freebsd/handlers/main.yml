@@ -14,3 +14,8 @@
   service:
     name: samba_server
     state: restarted
+
+- name: restart local_unbound
+  service:
+    name: local_unbound
+    state: restarted
