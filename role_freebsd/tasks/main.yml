@@ -49,44 +49,48 @@
   notify: restart local_unbound
 
 - name: file /var/unbound/lan-zones.conf
+  template: 
     src: lan-zones.conf.j2
     dest: /var/unbound/lan-zones.conf
   notify: restart local_unbound
 
 - name: file /var/unbound/forward.conf
+  template:
     src: forward.conf.j2
     dest: /var/unbound/forward.conf
   notify: restart local_unbound
 
 - name: file /boot/loader.conf
+  template:
     src: loader.conf.j2
     dest: /boot/loader.conf
 
 - name: file /etc/rc.conf
+  template:
     src: rc.conf.j2
     dest: /etc/rc.conf
 
 - name: file /etc/pf.conf
-    template:
-      src: pf.conf.j2
-      dest: /etc/pf.conf
+  template:
+    src: pf.conf.j2
+    dest: /etc/pf.conf
 
 - name: backup plexdata 
-    archive:
-      src: '{{ local_path }}/plexdata'
-      dest: '{{ backup_path }}/plexdata.tar.gz'
+  archive:
+    src: '{{ local_path }}/plexdata'
+    dest: '{{ backup_path }}/plexdata.tar.gz'
 
 - name: backup nginx
-    archive:
-      src: '{{ local_path }}/etc/nginx'
-      dest: '{{ backup_path }}/nginx.tar.gz'
+  archive:
+    src: '{{ local_path }}/etc/nginx'
+    dest: '{{ backup_path }}/nginx.tar.gz'
 
 - name: backup pf_files
-    archive:
-      src: /etc/pf-files
-      dest: '{{ backup_path }}/pf-files.tar.gz'
+  archive:
+    src: /etc/pf-files
+    dest: '{{ backup_path }}/pf-files.tar.gz'
 
 - name: backup letsencrypt
-    archive:
-      src: '{{ local_path }}/etc/letsencrypt'
-      dest: '{{ backup_path }}/letsencrypt.tar.gz'
+  archive:
+    src: '{{ local_path }}/etc/letsencrypt'
+    dest: '{{ backup_path }}/letsencrypt.tar.gz'
