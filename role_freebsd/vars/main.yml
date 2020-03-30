@@ -10,5 +10,6 @@ packages:
 
 local_bin: /home/david/bin
 owner: david
+local_path: /usr/local
 backup_path: /mnt/zdoc/14_FreeBSD/ansible_backup
 plex_db_path: /usr/local/plexdata

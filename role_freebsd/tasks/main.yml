@@ -14,27 +14,30 @@
 - name: plexupdate script
   template:
     src: plexupdate.j2
-    dest: "{{ local_bin }}/plexupdate"
-    owner: "{{ owner }}"
+    dest: '{{ local_bin }}/plexupdate'
+    owner: '{{ owner }}'
     mode: 0755
 
 - name: plexmediaserver service
   template:
     src: plexmediaserver.j2
-    dest: /usr/local/etc/rc.d/plexmediaserver
+    dest: '{{ local_path }}/etc/rc.d/plexmediaserver'
+    owner: root
+    group: wheel
+    mode: 0755
 
-- name: file /usr/local/etc/nginx/nginx.conf
+- name: file '{{ local_path }}/etc/nginx/nginx.conf'
   template:
     src: nginx.conf.j2
-    dest: /usr/local/etc/nginx/nginx.conf
+    dest: '{{ local_path }}/etc/nginx/nginx.conf'
     owner: root
     group: wheel
   notify: restart nginx
 
-- name: file /usr/local/etc/smb4.conf
+- name: file '{{ local_path }}/etc/smb4.conf'
   template:
     src: smb4.conf.j2
-    dest: /usr/local/etc/smb4.conf
+    dest: '{{ local_path }}/etc/smb4.conf'
     owner: root
     group: wheel
   notify: restart samba
@@ -62,3 +65,28 @@
 - name: file /etc/rc.conf
     src: rc.conf.j2
     dest: /etc/rc.conf
+
+- name: file /etc/pf.conf
+    template:
+      src: pf.conf.j2
+      dest: /etc/pf.conf
+
+- name: backup plexdata 
+    archive:
+      src: '{{ local_path }}/plexdata'
+      dest: '{{ backup_path }}/plexdata.tar.gz'
+
+- name: backup nginx
+    archive:
+      src: '{{ local_path }}/etc/nginx'
+      dest: '{{ backup_path }}/nginx.tar.gz'
+
+- name: backup pf_files
+    archive:
+      src: /etc/pf-files
+      dest: '{{ backup_path }}/pf-files.tar.gz'
+
+- name: backup letsencrypt
+    archive:
+      src: '{{ local_path }}/etc/letsencrypt'
+      dest: '{{ backup_path }}/letsencrypt.tar.gz'
