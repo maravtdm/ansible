@@ -18,11 +18,6 @@
     owner: "{{ owner }}"
     mode: 0755
 
-- name: plexmediaserver service
-  template:
-    src: plexmediaserver.j2
-    dest: /usr/local/etc/rc.d/plexmediaserver
-
 - name: file /usr/local/etc/nginx/nginx.conf
   template:
     src: nginx.conf.j2
@@ -54,11 +49,3 @@
     src: forward.conf.j2
     dest: /var/unbound/forward.conf
   notify: restart local_unbound
-
-- name: file /boot/loader.conf
-    src: loader.conf.j2
-    dest: /boot/loader.conf
-
-- name: file /etc/rc.conf
-    src: rc.conf.j2
-    dest: /etc/rc.conf
