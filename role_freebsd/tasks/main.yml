@@ -18,18 +18,6 @@
     owner: "{{ owner }}"
     mode: 0755
 
-#- name: vape script
-#  template:
-#    src: vape.j2
-#    dest: "{{ local_bin }}/vape"
-#    owner: "{{ owner }}"
-#    mode: 0755
-
-#- name: file /usr/local/etc/afp.conf
-#  template:
-#    src: afp.conf.j2
-#    dest: /usr/local/etc/afp.conf
-
 - name: file /usr/local/etc/nginx/nginx.conf
   template:
     src: nginx.conf.j2
@@ -38,13 +26,6 @@
     group: wheel
   notify: restart nginx
 
-#- name: file /usr/local/etc/minidlna.conf
-#  template:
-#    src: minidlna.conf.j2
-#    dest: /usr/local/etc/minidlna.conf
-#    owner: root
-#    group: wheel
-
 - name: file /usr/local/etc/smb4.conf
   template:
     src: smb4.conf.j2
@@ -52,3 +33,19 @@
     owner: root
     group: wheel
   notify: restart samba
+
+- name: file /var/unbound/unbound.conf
+  template:
+    src: unbound.conf.j2
+    dest: /var/unbound.conf
+  notify: restart local_unbound
+
+- name: file /var/unbound/lan-zones.conf
+    src: lan-zones.conf.j2
+    dest: /var/unbound/lan-zones.conf
+  notify: restart local_unbound
+
+- name: file /var/unbound/forward.conf
+    src: forward.conf.j2
+    dest: /var/unbound/forward.conf
+  notify: restart local_unbound
