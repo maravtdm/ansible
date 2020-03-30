@@ -35,6 +35,7 @@ http {
 server {
 	listen       80;
 	server_name matoda.pw;
+	
 	try_files $uri =404;
 	rewrite ^(.*) https://$server_name$1 permanent;
 	rewrite ^(.*) https://$host$request_uri? permanent;
@@ -56,6 +57,10 @@ server {
 	access_log /var/log/nginx/access.log;
 	error_log /var/log/nginx/error.log;
 	error_page   500 502 503 504  /50x.html;
+
+	if ($http_referer ~* (seo|referrer|redirect|link=|url=|url?|path=|dku=|babes|click|girl|jewelry|love|organic|poker|porn|sex|teen|video|webcam) ) {
+		return 405;
+	}
 
 	ssl_certificate "/usr/local/etc/letsencrypt/live/matoda.pw/cert.pem";
 	ssl_certificate_key "/usr/local/etc/letsencrypt/live/matoda.pw/privkey.pem";
@@ -80,6 +85,7 @@ server {
 		#html/;
 		index  index.html index.htm;
 		}
+	
 	location = /50x.html {
 		root   /usr/local/www/nginx-dist;
 		}
@@ -89,12 +95,12 @@ server {
 #		set $cache_uri $request_uri;
 	
 	location ~ /\.well-known/acme-challenge/ {
-	allow all;
+		allow all;
 		}
 
-#	location ~ /\. {
-#		deny all; access_log off; log_not_found off;
-#		}
+	location ~ /\. {
+		deny all; access_log off; log_not_found off;
+		}
 
 	location = /favicon.ico {
 		alias /usr/local/www/freebsd.png;
@@ -105,7 +111,7 @@ server {
 		}
 
 	location /online_shares {
-		alias /mnt/doc;
+		alias /mnt/zdoc;
 		if ($request_uri ~* ".(jpg|jpeg|gif|gz|zip|flv|rar|wmv|avi|css|swf|png|htc|ico|mpeg|mpg|txt|mp3|mov|js)(\?v=[0-9.]+)?$") {
 		expires 30d;
 		access_log off;
@@ -118,15 +124,15 @@ server {
     		auth_basic_user_file conf/htpasswd;
 		}
 	location /paul {
-		alias /mnt/doc/paul;
+		alias /mnt/zdoc/paul;
 		autoindex on;
 		autoindex_localtime on;
 		autoindex_exact_size off;
 		auth_basic           "closed site";
 		auth_basic_user_file conf/htpasswd;
 		}
-	location /public {
-		alias /mnt/doc/public;
+	location /publik {
+		alias /mnt/zdoc/public;
 		autoindex on;
 		autoindex_localtime on;
 		autoindex_exact_size off;

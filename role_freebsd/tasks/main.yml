@@ -18,12 +18,12 @@
     owner: "{{ owner }}"
     mode: 0755
 
-- name: vape script
-  template:
-    src: vape.j2
-    dest: "{{ local_bin }}/vape"
-    owner: "{{ owner }}"
-    mode: 0755
+#- name: vape script
+#  template:
+#    src: vape.j2
+#    dest: "{{ local_bin }}/vape"
+#    owner: "{{ owner }}"
+#    mode: 0755
 
 #- name: file /usr/local/etc/afp.conf
 #  template:
