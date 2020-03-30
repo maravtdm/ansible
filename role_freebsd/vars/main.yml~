@@ -2,7 +2,7 @@ services:
   - nginx
   - plexmediaserver
   - jdownloader
-  - samba_server
+#  - samba_server
 
 packages:
   - nginx
