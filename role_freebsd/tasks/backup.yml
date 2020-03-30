@@ -3,23 +3,19 @@
 - name: backup plexdata 
   archive:
     path: '{{ local_path }}/plexdata'
-    dest: '{{ backup_path }}/plexdata.xz'
-    format: xz
+    dest: '{{ backup_path }}/plexdata.gz'
 
 - name: backup nginx
   archive:
     path: '{{ local_path }}/etc/nginx'
-    dest: '{{ backup_path }}/nginx.xz'
-    format: xz
+    dest: '{{ backup_path }}/nginx.gz'
 
 - name: backup pf_files
   archive:
     path: /etc/pf-files
-    dest: '{{ backup_path }}/pf-files.xz'
-    format: xz
+    dest: '{{ backup_path }}/pf-files.gz'
 
 - name: backup letsencrypt
   archive:
     path: '{{ local_path }}/etc/letsencrypt'
-    dest: '{{ backup_path }}/letsencrypt.xz'
-    format: xz
+    dest: '{{ backup_path }}/letsencrypt.gz'
