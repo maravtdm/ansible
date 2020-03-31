@@ -80,3 +80,8 @@
   template:
     src: FreeBSD.conf.j2
     dest: /etc/pkg/FreeBSD.conf
+
+- name: file login.conf
+  template:
+    src: login.conf.j2
+    dest: /etc/login.conf
