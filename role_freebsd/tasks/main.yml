@@ -2,9 +2,9 @@
 # tasks file for role_freebsd
 
 #- include: display_ip.yml
-#- include: service.yml
 - include: install.yml
-- include: backup.yml
+- include: service.yml
+#- include: backup.yml
 
 - name: sshd_config file
   template:
@@ -75,3 +75,8 @@
   template:
     src: pf.conf.j2
     dest: /etc/pf.conf
+
+- name: file FreeBSD.conf
+  template:
+    src: FreeBSD.conf.j2
+    dest: /etc/pkg/FreeBSD.conf

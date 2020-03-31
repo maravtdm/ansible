@@ -1,9 +1,9 @@
 ---
 # tasks file for role_freebsd
 
-- name: check if {{ services | to_yaml }} are started
+- name: check if {{ services | to_yaml }} are enabled
   service:
     name: "{{ item }}"
-    state: started
+    enabled: yes
   loop: "{{ services }}"
 
