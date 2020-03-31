@@ -1,6 +1,5 @@
 hostname="bsd-one"
 keymap="fr.kbd"
-#ifconfig_re0="DHCP"
 ifconfig_re0="inet 192.168.111.22 netmask 255.255.255.0"
 defaultrouter="192.168.111.254"
 sshd_enable="YES"
@@ -12,7 +11,6 @@ kld_list="/boot/modules/radeonkms.ko /boot/modules/vboxnetflt.ko /boot/modules/v
 #kld_list="/boot/modules/i915kms.ko"
 linux_enable="YES"
 
-#moused_enable="YES"
 dbus_enable="YES"
 hald_enable="YES"
 powerdxx_enable="NO"
@@ -23,12 +21,12 @@ slim_enable="NO"
 local_unbound_enable="YES"
 ntpd_enable="YES"
 
-netatalk_enable="NO"
 avahi_daemon_enable="YES"
 cnid_metad_enable="YES"
-#
 samba_server_enable="YES"
 rpcbind_enable="YES"
+###
+netatalk_enable="NO"
 nfs_server_enable="NO"
 mountd_enable="NO"
 nfs_server_flags="-u -t -n 4"
@@ -65,9 +63,9 @@ rundeck_enable="NO"
 mysql_enable="NO"
 
 minidlna_enable="NO"
-emby_server_enable="NO"
 clamav_clamd_enable="NO"
 clamav_freshclam_enable="NO"
+
 #wlans_ath0="wlan0"
 #ifconfig_wlan0="WPA DHCP"
 smartd_enable="NO"
