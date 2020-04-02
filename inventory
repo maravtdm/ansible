@@ -5,4 +5,5 @@
 [freebsd:vars]
 #ansible_host=192.168.111.22
 ansible_user=david
-ansible_connection=local
+ansible_connection=ssh
+#local

@@ -3,7 +3,7 @@
 
 - include: install.yml
 - include: service.yml
-#- include: backup.yml
+- include: backup.yml
 
 - name: sshd_config file
   template:
