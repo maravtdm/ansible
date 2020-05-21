@@ -1,17 +1,20 @@
-kern.geom.label.disk_ident.enable="0"
-kern.geom.label.gptid.enable="0"
+kern.geom.label.disk_ident.enable=0
+kern.geom.label.gptid.enable=0
 
 loader_brand="gbsd"
 loader_logo="gbsd"
-autoboot_delay="5"
-hw.psm.synaptics_support="1"
+autoboot_delay=5
+#hw.psm.synaptics_support=1
 # boot_mute="YES"
-geom_mirror_load="YES"
-crypto_load="YES"
-aesni_load="YES"
-geom_eli_load="YES"
 zfs_load="YES"
 aio_load="YES"
+ahci_load="YES"
+
+#geom_mirror_load="YES"
+#crypto_load="YES"
+#aesni_load="YES"
+#geom_eli_load="YES"
+
 
 # WIFI
 #if_ath_load="YES"
@@ -20,11 +23,11 @@ aio_load="YES"
 #wlan_ccmp_load="YES"
 #wlan_tkip_load="YES"
 
-coretemp_load="YES"
-amdtemp_load="YES"
-smbios_load="YES"
-smbus_load="YES"
-ichsmb_load="YES"
+#coretemp_load="YES"
+#amdtemp_load="YES"
+#smbios_load="YES"
+#smbus_load="YES"
+#ichsmb_load="YES"
 
 libiconv_load="YES"
 smbfs_load="YES"
@@ -40,7 +43,7 @@ cpu_microcode_name="/boot/firmware/intel-ucode.bin"
 
 kern.racct.enable=1
 
-vboxdrv_load="YES"
+vboxdrv_load="NO"
 #vboxnetadp_load="YES"
 #vboxnetflt_load="YES"
 

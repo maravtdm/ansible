@@ -11,6 +11,10 @@
 	smb ports = 139
 	workgroup = WORKGROUP
 	interfaces = 192.168.111.0/24 127.0.0.1
+	create mask = 0644
+	force create mode = 0644
+	directory mask = 0644
+	force directory mode = 0644
 
 	vfs objects = catia fruit streams_xattr
 	fruit:aapl = yes
@@ -84,6 +88,16 @@
 
 [Time Machine]
 	path = /mnt/zdoc/09_MacBackup
+	valid users = %U
+	browseable = yes
+	writable = yes
+	read only = no
+	inherit acls = yes
+	spotlight = no
+	block size = 524288
+
+[popos]
+	path = /mnt/zdoc/17_Pop
 	valid users = %U
 	browseable = yes
 	writable = yes
