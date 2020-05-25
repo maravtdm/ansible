@@ -11,25 +11,27 @@ kld_list="/boot/modules/radeonkms.ko"
 # /boot/modules/vboxnetflt.ko /boot/modules/vboxnetadp.ko"
 linux_enable="YES"
 
-dbus_enable="YES"
 hald_enable="YES"
 powerdxx_enable="NO"
-microcode_update_enable="YES"
+microcode_update_enable="NO"
 
 slim_enable="NO"
 
-local_unbound_enable="YES"
+local_unbound_enable="NO"
 ntpd_enable="NO"
 chronyd_enable="YES"
 
-avahi_daemon_enable="YES"
 cnid_metad_enable="YES"
 samba_server_enable="YES"
 rpcbind_enable="YES"
+
 ###
 netatalk_enable="NO"
-nfs_server_enable="NO"
-mountd_enable="NO"
+dbus_enable="YES"
+avahi_daemon_enable="YES"
+
+#nfs_server_enable="NO"
+#mountd_enable="NO"
 #nfs_server_flags="-u -t -n 4"
 #mountd_flags="-r"
 

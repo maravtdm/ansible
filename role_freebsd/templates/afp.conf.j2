@@ -5,24 +5,26 @@
 [Global]
 ; Global server settings
 log file = /var/log/netatalk.log
-;hosts allow = <subnet>
+;hosts allow = 192.168.111.0/24
 mimic model = TimeCapsule6,116
 afp interfaces = re0
-
+;afp listen = 192.168.111.22
+zeroconf = yes
 
 ;[Homes]
 ; basedir regex = /home
 
 [doc]
- path = /mnt/zdoc
+; path = /path/to/volume
+ path = /mnt/doc
 
 ;[Back In Time]
-; path = <path/to/folder>
+; path = /mnt/doc/10_ArchBackup
 
 ;[My Time Machine Volume]
 [Time_Machine]
 
 [09_MacBackup]
- path = /mnt/zdoc/09_MacBackup
-; valid users = <user> 
+ path = /mnt/doc/09_MacBackup
+; valid users = david 
  time machine = yes

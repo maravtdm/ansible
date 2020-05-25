@@ -23,8 +23,8 @@ ahci_load="YES"
 #wlan_ccmp_load="YES"
 #wlan_tkip_load="YES"
 
-#coretemp_load="YES"
-#amdtemp_load="YES"
+coretemp_load="YES"
+amdtemp_load="YES"
 #smbios_load="YES"
 #smbus_load="YES"
 #ichsmb_load="YES"
@@ -37,10 +37,10 @@ vm.kmem_size_max="16G"
 vm.kmem_size="12G"
 kern.maxvnodes=250000
 vfs.unmapped_buf_allowed=0
+hw.pci.do_power_nodriver=3
 
 cpu_microcode_load="YES"
 cpu_microcode_name="/boot/firmware/intel-ucode.bin"
-
 kern.racct.enable=1
 
 vboxdrv_load="NO"
