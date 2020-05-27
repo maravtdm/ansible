@@ -6,34 +6,24 @@ sshd_enable="YES"
 
 # Set dumpdev to "AUTO" to enable crash dumps, "NO" to disable
 dumpdev="AUTO"
-zfs_enable="YES"
+#zfs_enable="YES"
+#linux_enable="YES"
+
 kld_list="/boot/modules/radeonkms.ko"
 # /boot/modules/vboxnetflt.ko /boot/modules/vboxnetadp.ko"
-linux_enable="YES"
 
 hald_enable="YES"
-powerdxx_enable="NO"
-microcode_update_enable="NO"
-
-slim_enable="NO"
-
-local_unbound_enable="NO"
-ntpd_enable="NO"
-chronyd_enable="YES"
+miicrocode_update_enable="YES"
 
 cnid_metad_enable="YES"
 samba_server_enable="YES"
 rpcbind_enable="YES"
 
+chronyd_enable="YES"
+
 ###
-netatalk_enable="NO"
 dbus_enable="YES"
 avahi_daemon_enable="YES"
-
-#nfs_server_enable="NO"
-#mountd_enable="NO"
-#nfs_server_flags="-u -t -n 4"
-#mountd_flags="-r"
 
 # Firewall
 pf_enable="YES"
@@ -43,11 +33,35 @@ pflog_enable="NO"
 #devfs_system_ruleset="localrules"
 devfs_system_ruleset="system"
 
+nginx_enable="YES"
+
 jdownloader_enable="YES"
 jdownloader_user="david"
 jdownloader_group="david"
 
 plexmediaserver_enable="YES"
+
+slim_enable="NO"
+powerdxx_enable="NO"
+local_unbound_enable="NO"
+ntpd_enable="NO"
+#netatalk_enable="NO"
+#nfs_server_enable="NO"
+#mountd_enable="NO"
+#nfs_server_flags="-u -t -n 4"
+#mountd_flags="-r"
+
+sendmail_enable="NO"
+sendmail_submit_enable="NO"
+sendmail_outbound_enable="NO"
+sendmail_msp_queue_enable="NO"
+
+#mysql_enable="NO"
+#rundeckd_enable="NO"
+
+#minidlna_enable="NO"
+#clamav_clamd_enable="NO"
+#clamav_freshclam_enable="NO"
 
 #vboxservice_enable="NO"
 #vboxnet_enable="NO"
@@ -55,20 +69,6 @@ plexmediaserver_enable="YES"
 #vboxheadless_enable="NO"
 #vboxwebsrv_enable="NO"
 #vboxwebsrv_flags="-F /tmp/vboxweb"
-
-sendmail_enable="NO"
-sendmail_submit_enable="NO"
-sendmail_outbound_enable="NO"
-sendmail_msp_queue_enable="NO"
-
-nginx_enable="YES"
-
-mysql_enable="NO"
-rundeckd_enable="NO"
-
-minidlna_enable="NO"
-clamav_clamd_enable="NO"
-clamav_freshclam_enable="NO"
 
 #wlans_ath0="wlan0"
 #ifconfig_wlan0="WPA DHCP"
