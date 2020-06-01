@@ -42,23 +42,23 @@
     group: wheel
   notify: restart samba
 
-- name: file /var/unbound/unbound.conf
-  template:
-    src: unbound.conf.j2
-    dest: /var/unbound.conf
-  notify: restart local_unbound
+#- name: file /var/unbound/unbound.conf
+#  template:
+#    src: unbound.conf.j2
+#    dest: /var/unbound.conf
+#  notify: restart local_unbound
 
-- name: file /var/unbound/lan-zones.conf
-  template: 
-    src: lan-zones.conf.j2
-    dest: /var/unbound/lan-zones.conf
-  notify: restart local_unbound
+#- name: file /var/unbound/lan-zones.conf
+#  template: 
+#    src: lan-zones.conf.j2
+#    dest: /var/unbound/lan-zones.conf
+#  notify: restart local_unbound
 
-- name: file /var/unbound/forward.conf
-  template:
-    src: forward.conf.j2
-    dest: /var/unbound/forward.conf
-  notify: restart local_unbound
+#- name: file /var/unbound/forward.conf
+#  template:
+#    src: forward.conf.j2
+#    dest: /var/unbound/forward.conf
+#  notify: restart local_unbound
 
 - name: file /boot/loader.conf
   template:
@@ -84,3 +84,8 @@
   template:
     src: login.conf.j2
     dest: /etc/login.conf
+
+- name: file resolv.conf
+  template:
+    src: resolv.conf.j2
+    dest: /etc/resolv.conf
