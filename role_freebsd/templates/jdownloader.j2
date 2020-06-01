@@ -1,0 +1,55 @@
+#!/bin/sh
+
+# PROVIDE: jdownloader
+# REQUIRE: LOGIN
+# KEYWORD: shutdown
+
+. /etc/rc.subr
+
+name="jdownloader"
+rcvar=${name}_enable
+start_cmd="${name}_start"
+stop_cmd="${name}_stop"
+status_cmd="${name}_status"
+pidfile=/var/run/${name}.pid
+sudo_cmd=/usr/local/bin/doas
+extra_commands="status"
+
+killproc() {
+	pid=$(ps -a | awk '/JDownloader/ {print $1}'i | head -1) #pgrep java)
+	[ "$pid" != "" ] && kill $pid
+}
+
+jdownloader_start() {
+	if [ -s ${pidfile} ] ; then
+		echo "JDownloader is already running (pid:$(cat $pidfile))"
+	else
+		echo "Starting JDownloader ..."
+		umask 002
+		${sudo_cmd} -u david /usr/local/bin/java -Xmx512m -Djava.awt.headless=true -jar /home/david/.jd/JDownloader.jar >/dev/null 2>&1 &
+		sleep 5
+		pid=$(ps -a | awk '/JDownloader/ {print $1}'i | head -1) #pgrep java)
+		${sudo_cmd} echo ${pid} > ${pidfile}
+		echo "JDownloader ( $pid ) started"
+	fi
+}
+
+jdownloader_stop() {
+	pid=$(cat $pidfile)
+	echo "Stopping JDownloader ..."
+	echo "Killing pid ($pid) ..."
+	killproc java #>/dev/null 2>&1 &
+	> ${pidfile}
+}
+
+jdownloader_status() {
+	if [ -s ${pidfile} ] ; then #!= "" ]; then
+		echo "JDownloader is running ($(cat $pidfile))"
+	else
+		echo "JDownloader is stopped"
+	fi
+}
+
+load_rc_config $name
+run_rc_command "$1"
+

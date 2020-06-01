@@ -6,7 +6,7 @@ services:
 
 packages:
   - nginx
-  - samba410
+  - samba411
 
 local_bin: /usr/home/david/bin
 owner: david

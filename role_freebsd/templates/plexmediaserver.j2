@@ -63,8 +63,8 @@ plex_precmd()
 	export PLEX_MEDIA_SERVER_PIDFILE=${pidfile}
 	export PLEX_MEDIA_SERVER_LOG_DIR="${plexmediaserver_support_path}/Plex Media Server/Logs"
 	export PATH="${SCRIPTPATH}/Resources/Python/bin:${PATH}"
-	export LC_ALL="en_US.UTF-8"
-	export LANG="en_US.UTF-8"
+	export LC_ALL="fr_FR.UTF-8"
+	export LANG="fr_FR.UTF-8"
 	ulimit -s 3000
 
 	if [ ! -d ${pidfile%/*} ]; then
