@@ -10,7 +10,7 @@ dumpdev="AUTO"
 zfs_enable="YES"
 linux_enable="YES"
 
-kld_list="/boot/modules/radeonkms.ko"
+kld_list="radeonkms"
 # /boot/modules/vboxnetflt.ko /boot/modules/vboxnetadp.ko"
 
 hald_enable="YES"
@@ -42,20 +42,20 @@ jdownloader_group="david"
 
 plexmediaserver_enable="YES"
 
+ntpd_enable="NO"
 slim_enable="NO"
 powerdxx_enable="NO"
 local_unbound_enable="NO"
-ntpd_enable="NO"
 #netatalk_enable="NO"
 #nfs_server_enable="NO"
 #mountd_enable="NO"
 #nfs_server_flags="-u -t -n 4"
 #mountd_flags="-r"
 
-sendmail_enable="NO"
+sendmail_enable="YES"
 sendmail_submit_enable="NO"
 sendmail_outbound_enable="NO"
-sendmail_msp_queue_enable="NO"
+sendmail_msp_queue_enable="YES"
 
 #mysql_enable="NO"
 #rundeckd_enable="NO"

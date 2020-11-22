@@ -31,6 +31,7 @@ http {
     tcp_nopush     on;
     keepalive_timeout  65;
     server_tokens off;
+    limit_req_zone $binary_remote_addr zone=web:10m rate=5r/s;
 
 server {
 	listen       80;
@@ -51,13 +52,14 @@ server {
 #	add_header Content-Security-Policy "default-src 'self';";
 	add_header Referrer-Policy "no-referrer";
 	if ($host !~* ^(matoda.pw)$ ) {
-	return 444;
+		return 444;
 	}
 	charset UTF-8;
 	access_log /var/log/nginx/access.log;
 	error_log /var/log/nginx/error.log;
 	error_page   500 502 503 504  /50x.html;
 
+	
 	if ($http_referer ~* (seo|referrer|redirect|link=|url=|url?|path=|dku=|babes|click|girl|jewelry|love|organic|poker|porn|sex|teen|video|webcam) ) {
 		return 405;
 	}
@@ -84,6 +86,7 @@ server {
 		root   /usr/local/www/nginx/;
 		#html/;
 		index  index.html index.htm;
+		limit_req zone=web burst=10 nodelay;
 		}
 	
 	location = /50x.html {
@@ -102,14 +105,21 @@ server {
 		deny all; access_log off; log_not_found off;
 		}
 
-	location = /favicon.ico {
-		alias /usr/local/www/freebsd.png;
-		}
+#	location = /favicon.ico {
+#		alias /usr/local/www/freebsd.png;
+#		}
 
 	location /robots.txt {
 		return 200 "User-agent: *\nDisallow: /";
 		}
 
+#	location /nginx_status {
+#		stub_status on;
+#        	access_log   off;
+#        	allow all; #1.1.1.1;
+#        	#deny all;
+#        }
+	
 	location /online_shares {
 		alias /mnt/zdoc;
 		if ($request_uri ~* ".(jpg|jpeg|gif|gz|zip|flv|rar|wmv|avi|css|swf|png|htc|ico|mpeg|mpg|txt|mp3|mov|js)(\?v=[0-9.]+)?$") {
@@ -137,6 +147,14 @@ server {
 		autoindex_localtime on;
 		autoindex_exact_size off;
 		}
+	location /slackware {
+		alias /mnt/zdoc/mirror/slackware;
+		access_log off;
+		autoindex on;
+		autoindex_localtime on;
+		autoindex_exact_size off;
+		}
+
 	location /js {
 		alias /mnt/zdoc/docs/.js;
 		autoindex on;

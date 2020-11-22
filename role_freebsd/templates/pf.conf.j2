@@ -10,10 +10,11 @@ antispoof quick for $iface
 set skip on $loop
 
 table <trusted> persist file "/etc/pf-files/pass_zones"
+
 pass in quick proto tcp from <trusted> to any port $service_port 
 
 pass in quick proto tcp from 141.101.0.0/16 to any port $service_port
-
 pass in quick on $iface inet from $local_net to $local_net
+
 block in quick proto tcp from any to any port $service_port 
 
